@@ -1,0 +1,33 @@
+.banner {
+    .banner_container {
+        position: relative;
+        .banner-title {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 2;
+            font-family: Fairwall Sans;
+            font-size: 100px;
+            font-weight: 300;
+            line-height: 104px;
+            letter-spacing: 0em;
+            text-align: center;
+            text-transform: uppercase;
+            max-width: 600px;
+            mark {
+                display: inline-block;
+                background-color: transparent;
+            }
+
+        }
+        .banner_decor {
+            position: relative;
+            text-align: center;
+            margin: 0 auto;
+            opacity: 0.5;
+            z-index: 1;
+        }
+    }
+}

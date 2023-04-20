@@ -1,0 +1,147 @@
+@font-face {
+    font-family: 'Fairwall Sans';
+    src: url('FairwallSans.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Stolzl';
+    src: url('Stolzl.ttf') format('truetype');
+}
+
+$main-font: 'Fairwall Sans', sans-serif;
+$sub-font: 'Stolzl', sans-serif;
+$main-bg: #FFC700;
+$main-color: #F2F6FF;
+$sub-color : #000;
+
+#root {
+    min-height: 100%;
+}
+
+.page-width {
+    max-width: calc(1542px + 12%);
+    padding-left: 6%;
+    padding-right: 6%;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.app_wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #323232;
+
+    header {}
+
+    main {
+        flex: 1;
+    }
+
+    footer {}
+}
+
+.circle {
+    box-sizing: border-box;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid $main-color;
+    color: $main-color;
+    font-family: $sub-font;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    svg path {
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        transition: all 0.3s;
+        color: $main-bg;
+        border-color: $main-bg;
+
+        svg path {
+            transition: all 0.3s;
+            fill: $main-bg;
+        }
+    }
+
+}
+.second-button {
+    width: fit-content;
+    height: 42px;
+    padding: 0 12px;
+    color: $sub-color;
+    background-color: $main-bg;
+    font-family: $sub-font;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        transition: all 0.3s;
+        color: $main-color;
+        border-color: $main-bg;
+    }
+
+    * {
+        text-decoration: none;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+    }
+}
+
+.main-button {
+    width: fit-content;
+    height: 42px;
+    padding: 0 12px;
+    color: $main-color;
+    font-family: $sub-font;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $main-color;
+    border-radius: 100px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        transition: all 0.3s;
+        color: $main-bg;
+        border-color: $main-bg;
+    }
+
+    * {
+        text-decoration: none;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+    }
+}
+
+.main-text {
+    font-family: $sub-font;
+    color: $main-color;
+}
