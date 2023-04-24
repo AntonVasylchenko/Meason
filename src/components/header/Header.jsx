@@ -7,10 +7,44 @@ import Instagram from '../../ui/svg/Instagram'
 import Circle from '../../ui/Circle'
 import Mybutton from '../../ui/Mybutton'
 import Secondbutton from '../../ui/Secondbutton'
+import Open from '../../ui/svg/Open'
+import Close from '../../ui/svg/Close'
 
 const Header = () => {
+    const [open, setOpen] = React.useState(false);
+    const [scroll, setScroll] = React.useState(false);
+    const [scrollDirection, setScrollDirection] = React.useState("");
+    const body = React.useRef(document.querySelector("body")).current;
+
+    scroll ? body.classList.add("hidden") : body.classList.remove("hidden")
+    const handleClickOpen = () => {
+        setOpen(!open)
+        setScroll(!scroll)
+    }
+    React.useEffect(() => {
+        let lastScrollY = window.pageYOffset;
+        let pointDeleteAll = 30;
+
+        const updateScrollDirection = () => {
+            const scrollY = window.pageYOffset;
+            const direction = scrollY > lastScrollY ? "hideHeader" : "showHeader";
+            if (direction !== scrollDirection && (scrollY - lastScrollY > 10 || scrollY - lastScrollY < -10)) {
+                setScrollDirection(direction);
+            }
+            lastScrollY = scrollY > 0 ? scrollY : 0;
+            if (pointDeleteAll > scrollY) {
+                setScrollDirection("");
+            }
+        };
+        window.addEventListener("scroll", updateScrollDirection); // add event listener
+        return () => {
+            window.removeEventListener("scroll", updateScrollDirection); // clean up
+        }
+    }, [scrollDirection]);
+    let clasess = `header ${scrollDirection}`
+    
     return (
-        <header className='header page-width'>
+        <header className={`${clasess} page-width`}>
             <div className='header-left'>
                 <Logo />
                 <Circle>En</Circle>
@@ -26,6 +60,18 @@ const Header = () => {
                 <Circle><Telegram /></Circle>
                 <Circle><Viber /></Circle>
                 <Secondbutton>Calculate price</Secondbutton>
+            </div>
+            <div className='header-burger' onClick={handleClickOpen}>
+                {!open ? <Open /> : <Close />}
+            </div>
+            <div className={open ? "header-mobile show": "header-mobile hide"}>
+                <p className='header-mobile_text main-text'>High quality printing. Clothing and accessories branding.</p>
+                <Secondbutton>Calculate price</Secondbutton>
+                <div className='header-mobile_social'>
+                    <Circle><Instagram /></Circle>
+                    <Circle><Telegram /></Circle>
+                    <Circle><Viber /></Circle>
+                </div>
             </div>
         </header>
     )

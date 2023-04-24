@@ -1,52 +1,143 @@
 @mixin mr() {
-    &>*:not(:last-child) {
-        margin-right: 4.8%;
-    }
+  & > *:not(:last-child) {
+    margin-right: 4.8%;
+  }
 }
 
 @mixin df() {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
+$small: 374px;
+$mobile: 768px;
+$tablet: 998px;
+$medium: 1140px;
 
 .header {
+  width: 100%;
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  align-content: center;
+  justify-content: space-between;
+  &-left {
     width: 100%;
-    padding: 40px 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 10px;
-    align-content: center;
-    justify-content: space-between;
+    @include df();
+    @include mr();
+    justify-content: flex-start;
+  }
+
+  &-center {
+    @include df();
+    justify-content: center;
+    max-width: 215px;
+    margin: 0 auto;
+
+    &-text {
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: center;
+    }
+  }
+
+  &-right {
+    width: 100%;
+    justify-content: flex-end;
+    @include df();
+    @include mr();
+  }
+  &-burger {
+    display: none;
+  }
+  &-mobile {
+    display: none;
+  } 
+}
+@media (max-width: $tablet) {
+  .header {
+    grid-template-columns: 1fr auto;
 
     &-left {
-        width: 100%;
-        @include df();
-        @include mr();
-        justify-content: flex-start;
     }
 
     &-center {
-        @include df();
-        justify-content: center;
-        max-width: 215px;
-        margin: 0 auto;
-
-        &-text {
-            margin: 0;
-            padding: 0;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 20px;
-            letter-spacing: 0em;
-            text-align: center;
-        }
+      display: none;
+      &-text {
+      }
     }
 
     &-right {
-        width: 100%;
-        justify-content: flex-end;
-        @include df();
-        @include mr()
+      display: none;
     }
+    &-burger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      z-index: 5;
+      svg {
+        animation-name: show;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        animation-duration: 0.3s;
+        opacity: 0;
+        transition: opacity 0.3;
+      }
+    }
+    &-mobile {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: translateX(-100%);
+        background-color: #000;
+        z-index: 3;
+        position: absolute;
+        transition: all 0.3s;
+        &.show {
+          transform: translateX(0);
+          transition: all 0.3s;
+        }
+        &::after {
+            content: "";
+            z-index: 2;
+            position: absolute;
+            background-color: rgba($color: #000000, $alpha: 0.3);
+        }
+
+        .header-mobile_text {
+          margin: 25px auto;
+          text-align: center;
+        }
+        .second-button {
+          margin: 0 auto 25px auto;
+        }
+        .header-mobile_social {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          column-gap: 25px;
+        }
+      } 
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

@@ -14,6 +14,13 @@ $main-bg: #FFC700;
 $main-color: #F2F6FF;
 $sub-color : #000;
 
+
+body {
+    &.hidden {
+        height: 100vh;
+        overflow: hidden;
+    }
+}
 #root {
     min-height: 100%;
 }
@@ -144,4 +151,11 @@ $sub-color : #000;
 .main-text {
     font-family: $sub-font;
     color: $main-color;
+}
+.second-text {
+    font-family: $main-font;
+    color: $main-color;
+    mark {
+        color: $main-bg;
+    }
 }
