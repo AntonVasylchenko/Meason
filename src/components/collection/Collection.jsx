@@ -1,12 +1,19 @@
 import React from 'react'
-import "./collection.css"
+import "./collection.scss"
 import { getCategory } from '../../util/getCategory'
-
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 const Collection = ({ items }) => {
     const [type, setType] = React.useState([]);
     const [collection, setCollection] = React.useState([]);
     const [active, setActive] = React.useState(false)
+    const showCollection = (name, event = false) => {
+        let filterArray = items.filter(el => el.type === name);
+        setCollection(getCategory(filterArray, "category"));
+        if (event) {
+            setActive(event.target.id);
+        }
+    }
 
     React.useEffect(() => {
         setType(getCategory(items, "type"))
@@ -16,15 +23,6 @@ const Collection = ({ items }) => {
     React.useEffect(() => {
         showCollection(type[0])
     }, [type])
-
-    const showCollection = (name, event = false) => {
-        let filterArray = items.filter(el => el.type === name);
-        setCollection(getCategory(filterArray, "category"));
-         if (event) {
-            setActive(event.target.id);
-         }   
-    }   
-
 
     return (
         <section>
@@ -36,24 +34,34 @@ const Collection = ({ items }) => {
                             {type.map((el, index) => {
                                 return <div
                                     className={Number(active) === index ? "isActive main-button" : "main-button"}
-                                    onClick={(event) => showCollection(el,event)} 
-                                    id={index} 
+                                    onClick={(event) => showCollection(el, event)}
+                                    id={index}
                                     key={el + index}
-                                    >
-                                        {el}
-                                    </div>
+                                >
+                                    {el}
+                                </div>
                             })}
                         </div>
                     </div>
                     <div className='collection-names'>
-                        {collection.map((el, index) => {
-                            return <p key={el + index} className='collection-name'>{el}</p>
-                        })}
+                        <TransitionGroup>
+                            {collection.map((el, index) => {
+                                return (
+                                    <CSSTransition
+                                        key={el + index}
+                                        timeout={500}
+                                        classNames="item"
+                                    >
+                                        <p  className='collection-name'>{el}</p>
+                                    </CSSTransition>
+                                )
+                            })}
+                        </TransitionGroup>
                     </div>
                 </div>
             </div>
 
-        </section>
+        </section >
     )
 }
 

@@ -114,7 +114,15 @@ $medium: 1140px;
     }
 }
 
-
+.banner {
+    &.isVisible {
+        animation-name: appear;
+        animation-delay: 0s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        animation-duration: 6s;
+    }
+}
 .banner {
     .banner_container {
         @media (max-width: $tablet) {

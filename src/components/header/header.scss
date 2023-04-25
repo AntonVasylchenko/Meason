@@ -22,6 +22,29 @@ $medium: 1140px;
   grid-column-gap: 10px;
   align-content: center;
   justify-content: space-between;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  transition-duration: 0.5s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.hideHeader {
+    top: -250px;
+    transition-duration: 0.5s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  &.showHeader {
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    transition-duration: .5s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+  }
   &-left {
     width: 100%;
     @include df();
@@ -57,7 +80,7 @@ $medium: 1140px;
   }
   &-mobile {
     display: none;
-  } 
+  }
 }
 @media (max-width: $tablet) {
   .header {
@@ -92,43 +115,43 @@ $medium: 1140px;
       }
     }
     &-mobile {
-        display: flex;
-        flex-direction: column;
-        max-width: 100%;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        width: 100%;
-        transform: translateX(-100%);
-        background-color: #000;
-        z-index: 3;
-        position: absolute;
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transform: translateX(-100%);
+      background-color: #000;
+      z-index: 3;
+      position: absolute;
+      transition: all 0.3s;
+      &.show {
+        transform: translateX(0);
         transition: all 0.3s;
-        &.show {
-          transform: translateX(0);
-          transition: all 0.3s;
-        }
-        &::after {
-            content: "";
-            z-index: 2;
-            position: absolute;
-            background-color: rgba($color: #000000, $alpha: 0.3);
-        }
+      }
+      &::after {
+        content: "";
+        z-index: 2;
+        position: absolute;
+        background-color: rgba($color: #000000, $alpha: 0.3);
+      }
 
-        .header-mobile_text {
-          margin: 25px auto;
-          text-align: center;
-        }
-        .second-button {
-          margin: 0 auto 25px auto;
-        }
-        .header-mobile_social {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          column-gap: 25px;
-        }
-      } 
+      .header-mobile_text {
+        margin: 25px auto;
+        text-align: center;
+      }
+      .second-button {
+        margin: 0 auto 25px auto;
+      }
+      .header-mobile_social {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 25px;
+      }
+    }
   }
 }
 
