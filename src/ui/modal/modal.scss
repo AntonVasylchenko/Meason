@@ -1,0 +1,30 @@
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index:  5;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in;
+    &.show {
+        opacity: 1;
+        pointer-events: all;
+        transition: opacity 0.3s ease-in;
+    }
+    .modal-container {
+        width: fit-content;
+        height: fit-content;
+        padding: 25px;
+        background-color: #fff;
+        display: block;
+        border-radius: 5px;
+    }
+}
