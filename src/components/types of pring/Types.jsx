@@ -1,7 +1,17 @@
 import React from 'react'
-import "./types.scss"
 import Mybutton from '../../ui/Mybutton'
 import Modal from '../../ui/modal/Modal'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore from "swiper/core";
+import { Pagination } from 'swiper';
+import 'swiper/css/pagination';
+import 'swiper/css';
+import "./types.scss"
+
+
+
+
+SwiperCore.use([Pagination]);
 
 const Types = () => {
     const [visible, setVisible] = React.useState(false);
@@ -33,7 +43,6 @@ const Types = () => {
         setVisible(!visible)
         let images = cards.filter(el => el.id === id);
         setSlides(images[0]["images"]);
-        console.log(slides);
     }
 
     return (
@@ -52,14 +61,34 @@ const Types = () => {
                                     <p className='type-item_footer-info'>
                                         {el.info}
                                     </p>
-                                    <Mybutton onClick={() => { showModal(el.id) }}>Lets print!</Mybutton>
+                                    <Mybutton onClick={() => { showModal(el.id) }}>Show print!</Mybutton>
                                 </div>
                             </div>
                         )
                     })}
                 </div>
             </div>
-            <Modal visible={visible} setVisible={setVisible}>Hello world</Modal>
+            <Modal visible={visible} setVisible={setVisible}>
+                <Swiper
+                    modules={[Pagination]}
+                    spaceBetween={20}
+                    slidesPerView={1}
+                    centeredSlides={true}
+                    pagination={{
+                        clickable: true
+                    }}
+                >
+                    {slides.length > 0 &&
+                        slides.map((el, index) => {
+                            return (
+                                <SwiperSlide key={el + index}>
+                                    <img src={el} alt="Type slide" />
+                                </SwiperSlide>
+                            )
+                        })
+                    }
+                </Swiper>
+            </Modal>
         </section>
     )
 }

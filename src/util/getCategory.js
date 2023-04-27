@@ -13,5 +13,19 @@ export function getCategory(arr, type) {
             result.push(cate[i]);
         }
     }
-    return result;
+    return getUniqTags(result);
+}
+
+function getUniqTags(tags) {
+    var results = [];
+
+    tags.forEach(function (value) {
+        value = value.trim();
+
+        if (results.indexOf(value) === -1) {
+            results.push(value);
+        }
+    });
+
+    return results; 
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import "./collection.scss"
 import { getCategory } from '../../util/getCategory'
+import { NavLink } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 const Collection = ({ items }) => {
@@ -52,7 +53,9 @@ const Collection = ({ items }) => {
                                         timeout={500}
                                         classNames="item"
                                     >
-                                        <p  className='collection-name'>{el}</p>
+                                        <NavLink className='collection-name' to={`/${el}`}>
+                                            {el}
+                                        </NavLink>
                                     </CSSTransition>
                                 )
                             })}

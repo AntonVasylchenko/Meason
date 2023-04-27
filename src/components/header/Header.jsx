@@ -9,6 +9,7 @@ import Mybutton from '../../ui/Mybutton'
 import Secondbutton from '../../ui/Secondbutton'
 import Open from '../../ui/svg/Open'
 import Close from '../../ui/svg/Close'
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
     const [open, setOpen] = React.useState(false);
@@ -42,11 +43,11 @@ const Header = () => {
         }
     }, [scrollDirection]);
     let clasess = `header ${scrollDirection}`
-    
+
     return (
         <header className={`${clasess} page-width`}>
             <div className='header-left'>
-                <Logo />
+                <NavLink to="/"><Logo /></NavLink>
                 <Circle>En</Circle>
                 <Mybutton> <a href="tel:+380666225191">+380666225191</a></Mybutton>
             </div>
@@ -64,7 +65,7 @@ const Header = () => {
             <div className='header-burger' onClick={handleClickOpen}>
                 {!open ? <Open /> : <Close />}
             </div>
-            <div className={open ? "header-mobile show": "header-mobile hide"}>
+            <div className={open ? "header-mobile show" : "header-mobile hide"}>
                 <p className='header-mobile_text main-text'>High quality printing. Clothing and accessories branding.</p>
                 <Secondbutton>Calculate price</Secondbutton>
                 <div className='header-mobile_social'>

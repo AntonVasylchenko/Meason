@@ -13,6 +13,7 @@ function Home({ items }) {
             <Collection items={items} />
             <ScrollText> Types of PRINTING</ScrollText>
             <Types />
+            <ScrollText> OUR WORKS </ScrollText>
         </>
     )
 }

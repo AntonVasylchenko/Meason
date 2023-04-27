@@ -2,11 +2,12 @@ import React from "react";
 import Header from "./components/header/Header";
 import Home from "./loyaut/Home";
 import axios from "axios";
-
+import Collection from "./loyaut/Collection";
+import { Route, Routes } from 'react-router-dom';
+import { getCategory } from "./util/getCategory";
 
 const App = () => {
   const [items, setItems] = React.useState([]);
-
   React.useEffect(() => {
     async function getItems() {
       try {
@@ -19,15 +20,21 @@ const App = () => {
       }
     }
     getItems()
+
   }, [])
 
-
+  let links = getCategory(items, "category").map((el, index) => {
+    return (<Route key={index} path={`/${el}`} element={<Collection items={items}  el={el} />}></Route>)
+  })
 
   return (
     <div className="app_wrapper">
       <Header />
       <main>
-        <Home items={items} />
+        <Routes>
+          <Route path="/" element={<Home items={items} />}></Route>
+          {links}
+        </Routes>
       </main>
       <footer>footer</footer>
     </div>
