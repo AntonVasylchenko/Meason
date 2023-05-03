@@ -5,6 +5,8 @@ import axios from "axios";
 import Collection from "./loyaut/Collection";
 import { Route, Routes } from 'react-router-dom';
 import { getCategory } from "./util/getCategory";
+import Footer from "./components/footer/Footer";
+import Product from "./loyaut/Product";
 
 const App = () => {
   const [items, setItems] = React.useState([]);
@@ -24,8 +26,12 @@ const App = () => {
   }, [])
 
   let links = getCategory(items, "category").map((el, index) => {
-    console.log(el);
-    return (<Route key={index} path={`/${el}`} element={<Collection items={items}  el={el} />}></Route>)
+    return (<Route key={index} path={`/${el}`} element={<Collection items={items} el={el} />}></Route>)
+  })
+
+  let linksProduct = items.map((el, index) => {
+    let path = el.path.collection + "/" + el.path.product;
+    return (<Route key={index} path={path} element={<Product product={el} />}></Route>)
   })
 
 
@@ -36,9 +42,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home items={items} />}></Route>
           {links}
+          {linksProduct}
         </Routes>
       </main>
-      <footer>footer</footer>
+      <Footer />
     </div>
   )
 }

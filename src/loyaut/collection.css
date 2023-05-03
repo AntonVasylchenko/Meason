@@ -29,6 +29,7 @@
     text-align: center;
     color: #D3D3D3;
     text-transform: capitalize;
+    flex: 1;
 }
 .collection-item {
     box-sizing: border-box;

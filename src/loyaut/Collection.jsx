@@ -13,6 +13,7 @@ function Collection({ items = [], el }) {
     }
   }
 
+
   return (
     <section>
       <Breadcrumbs>
@@ -29,7 +30,7 @@ function Collection({ items = [], el }) {
                 <img src={el.image} alt={el.category} />
               </div>
               <div className='collection-item_btn'>
-                <NavLink to={el.path.product}>View all</NavLink>
+                <NavLink to={el.path.product}>View all </NavLink>
               </div>
             </div>
           )
