@@ -24,8 +24,10 @@ const App = () => {
   }, [])
 
   let links = getCategory(items, "category").map((el, index) => {
+    console.log(el);
     return (<Route key={index} path={`/${el}`} element={<Collection items={items}  el={el} />}></Route>)
   })
+
 
   return (
     <div className="app_wrapper">
