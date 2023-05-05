@@ -11,7 +11,7 @@ import Open from '../../ui/svg/Open'
 import Close from '../../ui/svg/Close'
 import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ openDrawer, setOpenDrawer }) => {
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState(false);
     const [scrollDirection, setScrollDirection] = React.useState("");
@@ -60,7 +60,7 @@ const Header = () => {
                 <Circle><Instagram /></Circle>
                 <Circle><Telegram /></Circle>
                 <Circle><Viber /></Circle>
-                <Secondbutton>Calculate price</Secondbutton>
+                <Secondbutton onClick={()=>{setOpenDrawer(!openDrawer)}}>Cart</Secondbutton>
             </div>
             <div className='header-burger' onClick={handleClickOpen}>
                 {!open ? <Open /> : <Close />}

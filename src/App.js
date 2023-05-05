@@ -7,9 +7,12 @@ import { Route, Routes } from 'react-router-dom';
 import { getCategory } from "./util/getCategory";
 import Footer from "./components/footer/Footer";
 import Product from "./loyaut/Product";
+import Drawer from "./components/drawer/Drawer";
+
 
 const App = () => {
   const [items, setItems] = React.useState([]);
+  const [cart, setCart] = React.useState([]);
   React.useEffect(() => {
     async function getItems() {
       try {
@@ -24,6 +27,16 @@ const App = () => {
     getItems()
 
   }, [])
+  const getCartItems = (obj) => {
+    let itemIsCart = cart.some(el => el.id === obj.id && el.color === obj.color && el.size === obj.size);
+    !itemIsCart && setCart(prev => [...prev, obj]);
+    console.log(cart);
+    localStorage.setItem("cartItem", JSON.stringify(cart))
+  }
+
+  const [openDrawer, setOpenDrawer] = React.useState(false)
+
+
 
   let links = getCategory(items, "category").map((el, index) => {
     return (<Route key={index} path={`/${el}`} element={<Collection items={items} el={el} />}></Route>)
@@ -31,13 +44,16 @@ const App = () => {
 
   let linksProduct = items.map((el, index) => {
     let path = el.path.collection + "/" + el.path.product;
-    return (<Route key={index} path={path} element={<Product product={el} />}></Route>)
+    return (<Route key={index} path={path} element={<Product product={el} getCartItems={getCartItems} />}></Route>)
   })
+
+
 
 
   return (
     <div className="app_wrapper">
-      <Header />
+      <Header openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
+      <Drawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
       <main>
         <Routes>
           <Route path="/" element={<Home items={items} />}></Route>

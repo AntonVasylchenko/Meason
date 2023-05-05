@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Secondbutton({ children }) {
+function Secondbutton({ children, ...props}) {
     return (
-        <div className='second-button'>
+        <div {...props} className='second-button'>
             {children}
         </div>
     )
