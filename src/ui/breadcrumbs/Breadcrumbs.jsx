@@ -9,7 +9,7 @@ function Breadcrumbs({children}) {
         <nav className='breadcrumbs-container'>
             <ul className='breadcrumbs-list'>
                 <li className='breadcrumbs-item'>
-                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/Meason/">Home</NavLink>
                 </li>
                 {children}
             </ul>
