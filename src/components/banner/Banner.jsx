@@ -2,7 +2,7 @@ import React from 'react'
 import './banner.scss'
 import Decor from "../../ui/svg/Decor"
 const Banner = () => {
-    let imagesPath = ["../banner1.png", "../banner2.png", "../banner3.png", "../banner4.png", "../banner5.png", "../banner6.png"];
+    let imagesPath = ["https://Smd16Bi.github.io/Meason/banner1.png", "https://Smd16Bi.github.io/Meason/banner2.png", "https://Smd16Bi.github.io/Meason/banner3.png", "https://Smd16Bi.github.io/Meason/banner4.png", "https://Smd16Bi.github.io/Meason/banner5.png", "https://Smd16Bi.github.io/Meason/banner6.png"];
     const containerRef = React.useRef(null);
     const [visible, setVisible] = React.useState(false);
     const observer = React.useRef(null)

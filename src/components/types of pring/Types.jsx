@@ -20,22 +20,22 @@ const Types = () => {
         {
             id: 1,
             name: "Thermal transfer",
-            img: "/image/type1.png",
+            img: "https://Smd16Bi.github.io/Meason/image/type1.png",
             info: "Applying withflock films",
-            images: ["/image/type1.png", "/image/banner1.png", "/image/banner2.png"]
+            images: ["https://Smd16Bi.github.io/Meason/image/type1.png", "https://Smd16Bi.github.io/Meason/image/banner1.png", "https://Smd16Bi.github.io/Meason/image/banner2.png"]
         },
         {
             id: 2,
             name: "silkscreen",
-            img: "/image/type2.png",
+            img: "https://Smd16Bi.github.io/Meason/image/type2.png",
             info: "silkscreen",
-            images: ["/image/type2.png", "/image/banner3.png", "/image/banner4.png"]
+            images: ["https://Smd16Bi.github.io/Meason/image/type2.png", "https://Smd16Bi.github.io/Meason/image/banner3.png", "https://Smd16Bi.github.io/Meason/image/banner4.png"]
         },
         {
             id: 3, name: "direct printing",
-            img: "/image/type3.png",
+            img: "https://Smd16Bi.github.io/Meason/image/type3.png",
             info: "Applying with textile printer",
-            images: ["/image/type3.png", "/image/banner4.png", "/image/banner5.png"]
+            images: ["https://Smd16Bi.github.io/Meason/image/type3.png", "https://Smd16Bi.github.io/Meason/image/banner4.png", "https://Smd16Bi.github.io/Meason/image/banner5.png"]
         }
     ]
 
