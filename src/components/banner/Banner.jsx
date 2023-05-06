@@ -2,7 +2,14 @@ import React from 'react'
 import './banner.scss'
 import Decor from "../../ui/svg/Decor"
 const Banner = () => {
-    let imagesPath = ["https://Smd16Bi.github.io/Meason/banner1.png", "https://Smd16Bi.github.io/Meason/banner2.png", "https://Smd16Bi.github.io/Meason/banner3.png", "https://Smd16Bi.github.io/Meason/banner4.png", "https://Smd16Bi.github.io/Meason/banner5.png", "https://Smd16Bi.github.io/Meason/banner6.png"];
+    let imagesPath = [
+        "https://Smd16Bi.github.io/Meason/image/banner1.png",
+        "https://Smd16Bi.github.io/Meason/image/banner2.png",
+        "https://Smd16Bi.github.io/Meason/image/banner3.png",
+        "https://Smd16Bi.github.io/Meason/image/banner4.png",
+        "https://Smd16Bi.github.io/Meason/image/banner5.png",
+        "https://Smd16Bi.github.io/Meason/image/banner6.png"
+    ];
     const containerRef = React.useRef(null);
     const [visible, setVisible] = React.useState(false);
     const observer = React.useRef(null)
@@ -15,14 +22,14 @@ const Banner = () => {
 
         var callback = function (entries, observer) {
             if (entries[0].isIntersecting) {
-                setVisible(prev =>  !prev)
+                setVisible(prev => !prev)
             } else {
-                setVisible(prev =>  !prev)
+                setVisible(prev => !prev)
             }
         };
-        observer.current = new IntersectionObserver(callback,options);
+        observer.current = new IntersectionObserver(callback, options);
         observer.current.observe(containerRef.current)
-    },[observer])
+    }, [observer])
 
     return (
         <section className={visible ? "banner isVisible" : "banner"} ref={containerRef} >
