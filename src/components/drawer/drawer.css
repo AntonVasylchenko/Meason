@@ -23,9 +23,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 25px;
+}
+.drawer-title {
+    text-transform: uppercase;
 }
 
 .drawer {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 0;
     right: -200%;
@@ -47,6 +53,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
+    flex: 1;
 }
 .drawer-body >*:not(:last-child) {
     margin-bottom: 5px;
@@ -147,4 +154,18 @@
     text-align: left;
     color: #000;
     align-self: flex-start;
+}
+
+.drawer-footer {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-family: Fairwall Sans;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 25px;
+    letter-spacing: 0em;
+    color: #000;
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import "./drawer.css"
 const Drawer = ({ openDrawer, setOpenDrawer }) => {
     const [drawerItem, setDrawerItem] = React.useState([]);
+    const [total, setTotal] = React.useState(0);
     React.useEffect(() => {
         if (localStorage.getItem("cartItem")) {
             setDrawerItem(JSON.parse(localStorage.getItem("cartItem")));
@@ -10,17 +11,24 @@ const Drawer = ({ openDrawer, setOpenDrawer }) => {
 
     React.useEffect(() => {
         localStorage.setItem("cartItem", JSON.stringify(drawerItem));
-
+        setTotal(drawerItem.reduce((acc, elem) => acc + Number(elem.price.replace('$', '')), 0))
     }, [drawerItem])
     const removeItem = (key) => {
         setDrawerItem(prev => [...prev].filter(el => el.key !== key));
     }
+
+    const toggleDrawer = () => {
+        setOpenDrawer(!openDrawer);
+    }
+
+
+
     return (
-        <div className={openDrawer ? 'overlay show'  : 'overlay' } onClick={() => { setOpenDrawer(!openDrawer) }} >
-            <div className={openDrawer ? 'drawer show' : 'drawer' }onClick={(event) => { event.stopPropagation() }}>
+        <div className={openDrawer ? 'overlay show' : 'overlay'} onClick={toggleDrawer} >
+            <div className={openDrawer ? 'drawer show' : 'drawer'} onClick={(event) => { event.stopPropagation() }}>
                 <div className='drawer-header'>
                     <h1 className='drawer-title'> {drawerItem.length === 0 ? "Cart is Empty" : "our cart"} </h1>
-                    <div className='drawer-close' onClick={() => { setOpenDrawer(!openDrawer) }} >X</div>
+                    <div className='drawer-close' onClick={toggleDrawer} >X</div>
                 </div>
                 <div className='drawer-body'>
                     {drawerItem.map(el => {
@@ -40,7 +48,11 @@ const Drawer = ({ openDrawer, setOpenDrawer }) => {
                         )
                     })}
                 </div>
-                <div className='drawer-footer'></div>
+                {drawerItem.length !== 0 && <div className='drawer-footer'>
+                    <span>Total:</span>
+                    <span>{total}:00 $</span>
+                </div>
+                }
             </div>
         </div>
     )

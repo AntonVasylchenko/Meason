@@ -3,12 +3,15 @@ import "./product.css"
 import Breadcrumbs from '../ui/breadcrumbs/Breadcrumbs';
 import { NavLink } from 'react-router-dom';
 import Button from "../ui/Mybutton"
+import Modal from '../ui/modal/Modal';
 
 
 const Product = ({ product,getCartItems }) => {
 
     const [color, setColor] = React.useState(product.color[0]);
     const [size, setSize] = React.useState(product.size[0]);
+    const [visible, setVisible] = React.useState(false);
+    const [currentProduct, setCurrentProduct] = React.useState("");
     const seletColor = (name) => {
         setColor(name)
     }
@@ -16,7 +19,7 @@ const Product = ({ product,getCartItems }) => {
         setSize(name)
     }
 
-    function addToCart({ id, price, name,image }, oprion1, oprion2) {
+    function addToCart({ id, price, name,image }, oprion1, oprion2,event) {
         let cartItem = {
             key: id + oprion1 + oprion2,
             name: name,
@@ -28,6 +31,16 @@ const Product = ({ product,getCartItems }) => {
             quantity: 1
         }
         getCartItems(cartItem);
+        setVisible(!visible)
+        let res = <div>
+            <p>{name}</p>
+            <p>color:{oprion1}</p>
+            <p>size:{oprion2}</p>
+            <p>price:{price}</p>
+            <p>Added to cart</p>
+            </div>
+        setCurrentProduct(res)
+        
     }
 
     return (
@@ -76,7 +89,10 @@ const Product = ({ product,getCartItems }) => {
                                 })}
                             </div>
                         </div>
-                        <Button onClick={() => { addToCart(product,color,size) }}>Buy</Button>
+                        <Button onClick={(event) => {  addToCart(product,color,size,event) }}>Buy</Button>
+                        <Modal visible={visible} setVisible={setVisible}>
+                                {currentProduct}
+                        </Modal>
                     </div>
                 </div>
             </div>
