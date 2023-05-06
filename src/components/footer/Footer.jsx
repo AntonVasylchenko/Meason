@@ -11,7 +11,7 @@ const Footer = () => {
         <footer className='footer'>
             <div className='footer-container page-width'>
                 <div className='footer-logo'>
-                    <NavLink to="/"><Logo /></NavLink>
+                    <NavLink to="/Meason/"><Logo /></NavLink>
                 </div>
                 <div className='footer-info'>
                     <nav className='footer-info_nav'>

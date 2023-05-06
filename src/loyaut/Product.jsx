@@ -48,7 +48,7 @@ const Product = ({ product,getCartItems }) => {
             <Breadcrumbs>
                 <span className='breadcrumbs-item breadcrumbs-devided'>/</span>
                 <li className='breadcrumbs-item'>
-                    <NavLink to={"/" + product.category}>{product.category}</NavLink>
+                    <NavLink to={"/Meason/" + product.category}>{product.category}</NavLink>
                 </li>
                 <span className='breadcrumbs-item breadcrumbs-devided'>/</span>
                 <span className='breadcrumbs-item last-item'>{product.name}</span>

@@ -47,7 +47,7 @@ const Header = ({ openDrawer, setOpenDrawer }) => {
     return (
         <header className={`${clasess} page-width`}>
             <div className='header-left'>
-                <NavLink to="/"><Logo /></NavLink>
+                <NavLink to="/Meason/"><Logo /></NavLink>
                 <Circle>En</Circle>
                 <Mybutton> <a href="tel:+380666225191">+380666225191</a></Mybutton>
             </div>
