@@ -56,7 +56,7 @@ const App = () => {
       <Drawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
       <main>
         <Routes>
-          <Route path="/Meason/" element={<Home items={items} />}></Route>
+          <Route path="/Meason" element={<Home items={items} />}></Route>
           {links}
           {linksProduct}
         </Routes>
