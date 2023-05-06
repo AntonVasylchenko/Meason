@@ -67,7 +67,7 @@ const Header = ({ openDrawer, setOpenDrawer }) => {
             </div>
             <div className={open ? "header-mobile show" : "header-mobile hide"}>
                 <p className='header-mobile_text main-text'>High quality printing. Clothing and accessories branding.</p>
-                <Secondbutton>Calculate price</Secondbutton>
+                <Secondbutton onClick={()=>{setOpenDrawer(!openDrawer)}}>Cart</Secondbutton>
                 <div className='header-mobile_social'>
                     <Circle><Instagram /></Circle>
                     <Circle><Telegram /></Circle>
